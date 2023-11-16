@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Element Checker</title>
+    <script>
+        function addElement() {
+            var userInput = document.getElementById("elementInput").value;
+            var arrayContainer = document.getElementById("arrayContainer");
+            var listItem = document.createElement("li");
+            listItem.appendChild(document.createTextNode(userInput));
+            arrayContainer.appendChild(listItem);
+        }
+
+        function checkElement() {
+            var index = document.getElementById("indexInput").value;
+            var arrayItems = document.getElementsByTagName("li");
+            var verdictContainer = document.getElementById("verdictContainer");
+
+            if (index < arrayItems.length && index >= 0) {
+                var item = arrayItems[index].textContent;
+
+                if (item.includes(",")) {
+                    verdictContainer.innerHTML = "The element is an array.";
+                } else {
+                    verdictContainer.innerHTML = "The element is a single element.";
+                }
+            } else {
+                verdictContainer.innerHTML = "Invalid index.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Array Element Checker</h1>
+
+    <label for="elementInput">Enter element:</label>
+    <input type="text" id="elementInput">
+    <button onclick="addElement()">Add Element</button>
+
+    <ul id="arrayContainer"></ul>
+
+    <label for="indexInput">Enter index:</label>
+    <input type="number" id="indexInput">
+    <button onclick="checkElement()">Check Element</button>
+
+    <div id="verdictContainer"></div>
+</body>
+</html>
